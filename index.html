@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHD MOTION - Jasa Video Editing Profesional</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome & Phosphor Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f4f9',
+                            100: '#d9e2f1',
+                            500: '#1d3e6d',
+                            600: '#152f55',
+                            700: '#0e1f3a',
+                            800: '#0a1628',
+                            900: '#050c17',
+                            accent: '#38bdf8',
+                            purple: '#818cf8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #070d19;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.15);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-btn {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+        }
+        .glow-btn:hover {
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.55);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-brand-accent selection:text-brand-900">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2"></div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-card bg-opacity-80 border-b border-white/5 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-brand-800 rounded-xl p-1.5 flex items-center justify-center border border-white/10 group-hover:border-brand-accent transition-all duration-300">
+                    <!-- Clean SVG Vector logo matching uploaded DHD image -->
+                    <svg viewBox="0 0 100 60" class="w-full h-full fill-current text-brand-accent" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 30,5 C 10,5 5,20 5,30 C 5,40 10,55 30,55 L 45,55 L 45,43 L 30,43 C 20,43 17,35 17,30 C 17,25 20,17 30,17 L 45,17 L 45,5 Z" />
+                        <rect x="40" y="20" width="20" height="20" />
+                        <path d="M 70,5 C 90,5 95,20 95,30 C 95,40 90,55 70,55 L 55,55 L 55,43 L 70,43 C 80,43 83,35 83,30 C 83,25 80,17 70,17 L 55,17 L 55,5 Z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wider text-white">DHD <span class="text-brand-accent">MOTION</span></span>
+                    <span class="block text-[10px] text-gray-400 font-medium tracking-widest uppercase">Video Editing Studio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#beranda" class="hover:text-brand-accent transition-colors">Beranda</a>
+                <a href="#fitur" class="hover:text-brand-accent transition-colors">Kelebihan</a>
+                <a href="#harga" class="hover:text-brand-accent transition-colors">Daftar Harga</a>
+                <a href="#kalkulator" class="hover:text-brand-accent transition-colors">Pemesanan</a>
+                <a href="#pembayaran" class="hover:text-brand-accent transition-colors">Pembayaran</a>
+            </nav>
+
+            <!-- CTA Button Navbar & Social Links -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://www.instagram.com/dhdmotion?stkn=MWZtMnV4Y2txNTJkOQ==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-gray-300 hover:text-pink-400 hover:border-pink-500/50 transition-all duration-300" title="Follow Instagram @dhdmotion">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+                <a href="#kalkulator" class="bg-brand-accent hover:bg-sky-400 text-brand-900 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 shadow-md text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Pesan Sekarang
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-2xl focus:outline-none" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-white/10 px-6 py-4 space-y-3">
+            <a href="#beranda" class="block text-gray-300 hover:text-brand-accent py-2 font-medium">Beranda</a>
+            <a href="#fitur" class="block text-gray-300 hover:text-brand-accent py-2 font-medium">Kelebihan</a>
+            <a href="#harga" class="block text-gray-300 hover:text-brand-accent py-2 font-medium">Daftar Harga</a>
+            <a href="#kalkulator" class="block text-gray-300 hover:text-brand-accent py-2 font-medium">Pemesanan & Kalkulator</a>
+            <a href="#pembayaran" class="block text-gray-300 hover:text-brand-accent py-2 font-medium">Metode Pembayaran</a>
+            <a href="https://www.instagram.com/dhdmotion?stkn=MWZtMnV4Y2txNTJkOQ==" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-pink-400 font-semibold py-2">
+                <i class="fa-brands fa-instagram text-lg"></i> Instagram @dhdmotion
+            </a>
+            <a href="#kalkulator" class="block w-full text-center bg-brand-accent text-brand-900 font-bold py-3 rounded-xl mt-4">Pesan Sekarang</a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        <!-- Hero Section -->
+        <section id="beranda" class="relative py-20 lg:py-32 overflow-hidden">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-purple/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Text -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-brand-accent/30 text-brand-accent text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                            Jasa Editing Video Professional & Terjangkau
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Ubah Video Mentah Jadi Karya <span class="text-gradient">Visual Memukau</span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Tingkatkan engagement konten Instagram Reels, TikTok, YouTube Shorts, maupun konten promosi Anda bersama **DHD MOTION**. Pengerjaan rapi, cepat, dan transparan!
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <a href="#harga" class="w-full sm:w-auto bg-brand-accent hover:bg-sky-400 text-brand-900 font-bold px-8 py-4 rounded-xl transition-all duration-300 text-center glow-btn flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-list-check"></i> Lihat Paket Harga
+                            </a>
+                            <a href="https://wa.me/6285259598050?text=Halo%20DHD%20MOTION,%20saya%20ingin%20tanya-tanya%20tentang%20jasa%20video%20editing" target="_blank" class="w-full sm:w-auto glass-card hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 text-center flex items-center justify-center gap-3 border border-white/10">
+                                <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i> Chat WhatsApp
+                            </a>
+                        </div>
+
+                        <!-- Stats / Badges -->
+                        <div class="pt-8 border-t border-white/10 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">100%</h3>
+                                <p class="text-xs text-gray-400">Garansi Revisi</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Full HD</h3>
+                                <p class="text-xs text-gray-400">Export 1080p</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Fast</h3>
+                                <p class="text-xs text-gray-400">Pengerjaan Cepat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Visual Card -->
+                    <div class="lg:col-span-5">
+                        <div class="relative rounded-2xl p-4 glass-card border border-white/10 shadow-2xl">
+                            <!-- Video Mockup Preview -->
+                            <div class="relative aspect-video rounded-xl overflow-hidden bg-brand-900 border border-white/10 flex flex-col items-center justify-center group">
+                                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Video Editing Mockup" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-900 via-transparent to-transparent"></div>
+                                
+                                <!-- Play Button Simulation -->
+                                <div class="absolute z-10 w-16 h-16 rounded-full bg-brand-accent/90 text-brand-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play text-2xl ml-1"></i>
+                                </div>
+
+                                <div class="absolute bottom-4 left-4 right-4 z-10 bg-brand-900/80 backdrop-blur-md p-3 rounded-lg border border-white/10 flex justify-between items-center">
+                                    <div>
+                                        <p class="text-xs font-semibold text-white">Editing Professional</p>
+                                        <p class="text-[10px] text-gray-400">Timeline & FX Rendering</p>
+                                    </div>
+                                    <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded font-mono">1080p 60fps</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating badge -->
+                            <div class="absolute -bottom-5 -left-5 glass-card px-4 py-3 rounded-xl flex items-center gap-3 border border-white/15 shadow-xl">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Mulai Rp 10.000</p>
+                                    <p class="text-[10px] text-gray-400">Harga Terjangkau & Jelas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Included Features Section (Sudah Termasuk) -->
+        <section id="fitur" class="py-16 bg-brand-800/40 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs uppercase font-bold tracking-widest text-brand-accent mb-2">Fasilitas Standar</h2>
+                    <p class="text-3xl font-extrabold text-white sm:text-4xl">Apa Yang Anda Dapatkan?</p>
+                    <p class="mt-4 text-gray-400">Setiap paket pemesanan video editing di DHD MOTION sudah termasuk fasilitas standar berkualitas tinggi tanpa biaya tersembunyi.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Feature Item 1 -->
+                    <div class="glass-card p-6 rounded-2xl glass-card-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Potong Video Rapi</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Pemotongan bagian mati (dead air), kesalahan ucap, dan penyusunan alur video agar lebih padat & menarik.</p>
+                    </div>
+
+                    <!-- Feature Item 2 -->
+                    <div class="glass-card p-6 rounded-2xl glass-card-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Transisi Sederhana</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Perpindahan antar scene yang halus dan tidak kaku sehingga penonton nyaman menikmati video Anda.</p>
+                    </div>
+
+                    <!-- Feature Item 3 -->
+                    <div class="glass-card p-6 rounded-2xl glass-card-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Musik / Background Audio</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Pemilihan musik latar bebas hak cipta (no copyright) yang pas sesuai mood dan nuansa video.</p>
+                    </div>
+
+                    <!-- Feature Item 4 -->
+                    <div class="glass-card p-6 rounded-2xl glass-card-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Color Grading Dasar</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Penyesuaian warna, kontras, dan pencahayaan dasar agar tampilan video terlihat lebih hidup dan jernih.</p>
+                    </div>
+
+                    <!-- Feature Item 5 -->
+                    <div class="glass-card p-6 rounded-2xl glass-card-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-file-video"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Export HD (1080p)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Hasil akhir dengan resolusi High Definition 1080p yang siap diunggah ke TikTok, Reels, atau YouTube.</p>
+                    </div>
+
+                    <!-- Feature Item 6 -->
+                    <div class="glass-card p-6 rounded-2xl glass-card-hover transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">1x Revisi Gratis</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Garansi penyesuaian minor 1 kali gratis untuk memastikan hasil video sesuai ekspektasi Anda.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section (Daftar Harga) -->
+        <section id="harga" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs uppercase font-bold tracking-widest text-brand-accent mb-2">Transparan & Ekonomis</h2>
+                    <p class="text-3xl font-extrabold text-white sm:text-4xl">Daftar Paket Harga Video Editing</p>
+                    <p class="mt-4 text-gray-400">Pilih durasi video yang sesuai dengan kebutuhan projek Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Package 1 -->
+                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between glass-card-hover transition-all duration-300 border border-white/10 relative">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full">Pendek / Shorts</span>
+                                <i class="fa-solid fa-bolt text-brand-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">15 – 30 Detik</h3>
+                            <p class="text-xs text-gray-400 mb-6">Cocok untuk TikTok, IG Reels, Story, & Iklan Singkat.</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-xs text-gray-400">Kisaran Harga</span>
+                                <div class="text-2xl font-extrabold text-white mt-1">Rp 10.000 <span class="text-sm font-normal text-gray-400">– 15rb</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-xs text-gray-300 mb-8 border-t border-white/5 pt-4">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Cut & Trim Rapi</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Transisi Sederhana</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sound / Backsound</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Color Grading Dasar</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 1x Revisi Gratis</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackage('15-30s', 15000)" class="w-full py-3 rounded-xl bg-white/10 hover:bg-brand-accent hover:text-brand-900 text-white font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                            Pilih Paket Ini <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Package 2 (Popular) -->
+                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between glass-card-hover transition-all duration-300 border-2 border-brand-accent relative shadow-lg shadow-brand-accent/10">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-900 text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                            Paling Populer
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-4 mt-2">
+                                <span class="text-xs font-semibold px-3 py-1 bg-brand-accent/20 text-brand-accent rounded-full">Standar Reels</span>
+                                <i class="fa-solid fa-star text-brand-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">30 – 60 Detik</h3>
+                            <p class="text-xs text-gray-400 mb-6">Ideal untuk konten promo produk, review, & IG Reels standar.</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-xs text-gray-400">Kisaran Harga</span>
+                                <div class="text-2xl font-extrabold text-white mt-1">Rp 15.000 <span class="text-sm font-normal text-gray-400">– 25rb</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-xs text-gray-300 mb-8 border-t border-white/5 pt-4">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Cut & Trim Rapi</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Transisi Sederhana</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sound / Backsound</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Color Grading Dasar</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 1x Revisi Gratis</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackage('30-60s', 25000)" class="w-full py-3 rounded-xl bg-brand-accent text-brand-900 hover:bg-sky-400 font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                            Pilih Paket Ini <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Package 3 -->
+                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between glass-card-hover transition-all duration-300 border border-white/10 relative">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full">Medium Video</span>
+                                <i class="fa-solid fa-video text-brand-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">1 – 3 Menit</h3>
+                            <p class="text-xs text-gray-400 mb-6">Cocok untuk Video Youtube Ringkas, Vlog, & Company Profile.</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-xs text-gray-400">Kisaran Harga</span>
+                                <div class="text-2xl font-extrabold text-white mt-1">Rp 25.000 <span class="text-sm font-normal text-gray-400">– 50rb</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-xs text-gray-300 mb-8 border-t border-white/5 pt-4">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Cut & Trim Rapi</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Transisi Sederhana</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sound / Backsound</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Color Grading Dasar</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 1x Revisi Gratis</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackage('1-3m', 50000)" class="w-full py-3 rounded-xl bg-white/10 hover:bg-brand-accent hover:text-brand-900 text-white font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                            Pilih Paket Ini <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Package 4 -->
+                    <div class="glass-card rounded-2xl p-6 flex flex-col justify-between glass-card-hover transition-all duration-300 border border-white/10 relative">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full">Long Form</span>
+                                <i class="fa-solid fa-film text-brand-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">3 – 5 Menit</h3>
+                            <p class="text-xs text-gray-400 mb-6">Cocok untuk Dokumentasi Event, Presentation, & Video Tutorial.</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-xs text-gray-400">Kisaran Harga</span>
+                                <div class="text-2xl font-extrabold text-white mt-1">Rp 50.000 <span class="text-sm font-normal text-gray-400">– 75rb</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-xs text-gray-300 mb-8 border-t border-white/5 pt-4">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Cut & Trim Rapi</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Transisi Sederhana</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sound / Backsound</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Color Grading Dasar</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 1x Revisi Gratis</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackage('3-5m', 75000)" class="w-full py-3 rounded-xl bg-white/10 hover:bg-brand-accent hover:text-brand-900 text-white font-bold text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                            Pilih Paket Ini <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Order & Calculator Section -->
+        <section id="kalkulator" class="py-20 bg-brand-800/30 border-t border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Left Column: Form Pemesanan -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10">
+                            <div class="mb-8">
+                                <h2 class="text-2xl font-bold text-white">Form Pemesanan & Simulasi Harga</h2>
+                                <p class="text-sm text-gray-400 mt-1">Isi rincian project Anda untuk menghitung perkiraan total dan langsung kirim order via WhatsApp.</p>
+                            </div>
+
+                            <form id="orderForm" class="space-y-6" onsubmit="handleOrderSubmit(event)">
+                                <!-- Nama Pemesan -->
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="custName">Nama Lengkap / Brand *</label>
+                                    <input type="text" id="custName" required placeholder="Contoh: Budi Santoso" class="w-full bg-brand-900/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent transition-colors text-sm">
+                                </div>
+
+                                <!-- Judul / Deskripsi Project -->
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="projectTitle">Judul / Deskripsi Singkat Project *</label>
+                                    <input type="text" id="projectTitle" required placeholder="Contoh: Video Reels Promo Produk Sepatu" class="w-full bg-brand-900/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent transition-colors text-sm">
+                                </div>
+
+                                <!-- Pilihan Paket Durasi -->
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Pilih Durasi Video *</label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <label class="duration-option flex items-center justify-between p-3.5 rounded-xl border border-white/10 bg-brand-900/40 cursor-pointer hover:border-brand-accent/50 transition-all">
+                                            <div class="flex items-center gap-3">
+                                                <input type="radio" name="duration" value="15-30s" data-price="15000" checked onchange="calculateTotal()" class="accent-brand-accent">
+                                                <div>
+                                                    <p class="text-xs font-bold text-white">15 – 30 Detik</p>
+                                                    <p class="text-[10px] text-gray-400">Rp 10k - 15k</p>
+                                                </div>
+                                            </div>
+                                        </label>
+
+                                        <label class="duration-option flex items-center justify-between p-3.5 rounded-xl border border-white/10 bg-brand-900/40 cursor-pointer hover:border-brand-accent/50 transition-all">
+                                            <div class="flex items-center gap-3">
+                                                <input type="radio" name="duration" value="30-60s" data-price="25000" onchange="calculateTotal()" class="accent-brand-accent">
+                                                <div>
+                                                    <p class="text-xs font-bold text-white">30 – 60 Detik</p>
+                                                    <p class="text-[10px] text-gray-400">Rp 15k - 25k</p>
+                                                </div>
+                                            </div>
+                                        </label>
+
+                                        <label class="duration-option flex items-center justify-between p-3.5 rounded-xl border border-white/10 bg-brand-900/40 cursor-pointer hover:border-brand-accent/50 transition-all">
+                                            <div class="flex items-center gap-3">
+                                                <input type="radio" name="duration" value="1-3m" data-price="50000" onchange="calculateTotal()" class="accent-brand-accent">
+                                                <div>
+                                                    <p class="text-xs font-bold text-white">1 – 3 Menit</p>
+                                                    <p class="text-[10px] text-gray-400">Rp 25k - 50k</p>
+                                                </div>
+                                            </div>
+                                        </label>
+
+                                        <label class="duration-option flex items-center justify-between p-3.5 rounded-xl border border-white/10 bg-brand-900/40 cursor-pointer hover:border-brand-accent/50 transition-all">
+                                            <div class="flex items-center gap-3">
+                                                <input type="radio" name="duration" value="3-5m" data-price="75000" onchange="calculateTotal()" class="accent-brand-accent">
+                                                <div>
+                                                    <p class="text-xs font-bold text-white">3 – 5 Menit</p>
+                                                    <p class="text-[10px] text-gray-400">Rp 50k - 75k</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Fitur Tambahan Optional -->
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Layanan Tambahan (Opsional)</label>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-brand-900/30 cursor-pointer hover:bg-brand-900/60 transition-colors">
+                                            <div class="flex items-center gap-3 text-xs text-gray-300">
+                                                <input type="checkbox" id="addExpress" data-price="10000" onchange="calculateTotal()" class="accent-brand-accent rounded">
+                                                <span>Pengerjaan Kilat (24 Jam)</span>
+                                            </div>
+                                            <span class="text-xs font-semibold text-brand-accent">+Rp 10.000</span>
+                                        </label>
+
+                                        <label class="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-brand-900/30 cursor-pointer hover:bg-brand-900/60 transition-colors">
+                                            <div class="flex items-center gap-3 text-xs text-gray-300">
+                                                <input type="checkbox" id="addRevision" data-price="5000" onchange="calculateTotal()" class="accent-brand-accent rounded">
+                                                <span>Tambah 1x Revisi Ekstra</span>
+                                            </div>
+                                            <span class="text-xs font-semibold text-brand-accent">+Rp 5.000</span>
+                                        </label>
+
+                                        <label class="flex items-center justify-between p-3 rounded-xl border border-white/5 bg-brand-900/30 cursor-pointer hover:bg-brand-900/60 transition-colors">
+                                            <div class="flex items-center gap-3 text-xs text-gray-300">
+                                                <input type="checkbox" id="addSubtitle" data-price="10000" onchange="calculateTotal()" class="accent-brand-accent rounded">
+                                                <span>Tambah Subtitle / Teks Caption</span>
+                                            </div>
+                                            <span class="text-xs font-semibold text-brand-accent">+Rp 10.000</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Catatan Tambahan / Link Bahan -->
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="notes">Catatan Khusus / Link Drive Bahan Video</label>
+                                    <textarea id="notes" rows="3" placeholder="Masukkan instruksi khusus atau link Google Drive/Dropbox tempat Anda menyimpan bahan video..." class="w-full bg-brand-900/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent transition-colors text-sm"></textarea>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-brand-900 font-extrabold py-4 rounded-xl transition-all duration-300 shadow-lg flex items-center justify-center gap-3 text-base">
+                                    <i class="fa-brands fa-whatsapp text-2xl"></i> Kirim Orderan Ke WhatsApp
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Ringkasan & Metode Pembayaran -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <!-- Real-time Cost Breakdown -->
+                        <div class="glass-card p-6 rounded-3xl border border-white/10">
+                            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-calculator text-brand-accent"></i> Ringkasan Estimasi Biaya
+                            </h3>
+
+                            <div class="space-y-3 border-b border-white/10 pb-4 text-xs text-gray-300">
+                                <div class="flex justify-between">
+                                    <span>Paket Dasar (<span id="summaryPackage">15-30 Detik</span>):</span>
+                                    <span id="summaryBasePrice" class="font-semibold text-white">Rp 15.000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Layanan Tambahan:</span>
+                                    <span id="summaryAddonsPrice" class="font-semibold text-white">Rp 0</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-gray-400 block">Total Estimasi Maksimal</span>
+                                    <span id="summaryTotalPrice" class="text-3xl font-extrabold text-brand-accent">Rp 15.000</span>
+                                </div>
+                                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-medium">Bisa Nego via Chat</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method Section (Metode Pembayaran) -->
+                        <div id="pembayaran" class="glass-card p-6 rounded-3xl border border-white/10 space-y-4">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-credit-card text-brand-accent"></i> Info Rekening Pembayaran
+                            </h3>
+                            <p class="text-xs text-gray-400">Silakan lakukan pembayaran atau DP setelah mengonfirmasi rincian video dengan kami via WhatsApp.</p>
+
+                            <!-- DANA Account -->
+                            <div class="bg-brand-900/80 p-4 rounded-2xl border border-white/10 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-blue-600/20 rounded-xl text-blue-400 font-bold flex items-center justify-center text-xs">
+                                        DANA
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">DANA / E-Wallet</p>
+                                        <p class="text-sm font-bold text-white tracking-wider">085259598050</p>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('085259598050', 'Nomor DANA')" class="text-xs bg-white/10 hover:bg-brand-accent hover:text-brand-900 text-white font-semibold px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                                    <i class="fa-regular fa-copy"></i> Salin
+                                </button>
+                            </div>
+
+                            <!-- BCA Account -->
+                            <div class="bg-brand-900/80 p-4 rounded-2xl border border-white/10 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-sky-600/20 rounded-xl text-sky-400 font-bold flex items-center justify-center text-xs">
+                                        BCA
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">Bank Central Asia (BCA)</p>
+                                        <p class="text-sm font-bold text-white tracking-wider">1251514114</p>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('1251514114', 'Rekening BCA')" class="text-xs bg-white/10 hover:bg-brand-accent hover:text-brand-900 text-white font-semibold px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                                    <i class="fa-regular fa-copy"></i> Salin
+                                </button>
+                            </div>
+
+                            <!-- Instagram Official Card -->
+                            <div class="bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-indigo-500/10 p-4 rounded-2xl border border-pink-500/20 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-pink-500/20 rounded-xl text-pink-400 font-bold flex items-center justify-center text-lg">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">Instagram Resmi</p>
+                                        <a href="https://www.instagram.com/dhdmotion?stkn=MWZtMnV4Y2txNTJkOQ==" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-pink-400 hover:underline">@dhdmotion</a>
+                                    </div>
+                                </div>
+                                <a href="https://www.instagram.com/dhdmotion?stkn=MWZtMnV4Y2txNTJkOQ==" target="_blank" rel="noopener noreferrer" class="text-xs bg-pink-500 hover:bg-pink-600 text-white font-semibold px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 shadow">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Kunjungi
+                                </a>
+                            </div>
+
+                            <div class="text-[11px] text-gray-400 bg-white/5 p-3 rounded-xl border border-white/5">
+                                <i class="fa-solid fa-circle-info text-brand-accent mr-1"></i> Setelah transfer, mohon simpan resi/bukti untuk dikirimkan via chat WhatsApp.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 border-t border-white/10 py-12 text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-brand-800 rounded-lg p-1 flex items-center justify-center border border-white/10">
+                            <svg viewBox="0 0 100 60" class="w-full h-full fill-current text-brand-accent" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 30,5 C 10,5 5,20 5,30 C 5,40 10,55 30,55 L 45,55 L 45,43 L 30,43 C 20,43 17,35 17,30 C 17,25 20,17 30,17 L 45,17 L 45,5 Z" />
+                                <rect x="40" y="20" width="20" height="20" />
+                                <path d="M 70,5 C 90,5 95,20 95,30 C 95,40 90,55 70,55 L 55,55 L 55,43 L 70,43 C 80,43 83,35 83,30 C 83,25 80,17 70,17 L 55,17 L 55,5 Z" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold text-white">DHD MOTION</span>
+                    </div>
+                    <p class="text-xs leading-relaxed max-w-sm">
+                        Layanan jasa video editing profesional untuk kebutuhan personal, UMKM, brand, dan kreator konten dengan hasil bersih dan harga ramah kantong.
+                    </p>
+                    <div class="pt-2 flex items-center gap-3">
+                        <a href="https://www.instagram.com/dhdmotion?stkn=MWZtMnV4Y2txNTJkOQ==" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-gray-300 hover:text-pink-400 hover:border-pink-500/50 transition-all">
+                            <i class="fa-brands fa-instagram text-base"></i>
+                        </a>
+                        <a href="https://wa.me/6285259598050" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-gray-300 hover:text-emerald-400 hover:border-emerald-500/50 transition-all">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#beranda" class="hover:text-brand-accent transition-colors">Beranda</a></li>
+                        <li><a href="#fitur" class="hover:text-brand-accent transition-colors">Fasilitas Standar</a></li>
+                        <li><a href="#harga" class="hover:text-brand-accent transition-colors">Daftar Paket Harga</a></li>
+                        <li><a href="#kalkulator" class="hover:text-brand-accent transition-colors">Kalkulator & Order</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Kontak Kami</h4>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                            <a href="https://wa.me/6285259598050" target="_blank" class="hover:text-brand-accent transition-colors">+62 852-5959-8050</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-instagram text-pink-400 text-sm"></i>
+                            <a href="https://www.instagram.com/dhdmotion?stkn=MWZtMnV4Y2txNTJkOQ==" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors">@dhdmotion</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-clock text-brand-accent"></i>
+                            <span>Buka Setiap Hari (08.00 - 21.00 WIB)</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/5 pt-8 text-center text-xs text-gray-500">
+                &copy; <span id="year"></span> DHD MOTION. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/6285259598050?text=Halo%20DHD%20MOTION,%20saya%20tertarik%20menggunakan%20jasa%20video%20editing" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-brand-900 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group" aria-label="Chat via WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <!-- Tooltip -->
+        <span class="absolute right-16 bg-brand-900 text-white text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+            Chat CS DHD MOTION
+        </span>
+    </a>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Copy to clipboard helper function
+        function copyToClipboard(text, label) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`${label} (${text}) berhasil disalin!`);
+        }
+
+        // Custom Toast Notification System
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'glass-card bg-brand-900/90 text-white px-4 py-3 rounded-xl border border-brand-accent/30 text-xs font-semibold shadow-2xl flex items-center gap-2 transform translate-y-2 transition-all duration-300';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> ${message}`;
+            
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        // Package Selection Handler from Cards
+        function selectPackage(durationVal, price) {
+            const radio = document.querySelector(`input[name="duration"][value="${durationVal}"]`);
+            if (radio) {
+                radio.checked = true;
+                calculateTotal();
+                
+                // Scroll smoothly to order form
+                document.getElementById('kalkulator').scrollIntoView({ behavior: 'smooth' });
+                showToast(`Paket ${durationVal} dipilih! Silakan lengkapi detail.`);
+            }
+        }
+
+        // Price Calculation Logic
+        function calculateTotal() {
+            const selectedDurationRadio = document.querySelector('input[name="duration"]:checked');
+            const durationVal = selectedDurationRadio ? selectedDurationRadio.value : '15-30s';
+            const basePrice = selectedDurationRadio ? parseInt(selectedDurationRadio.getAttribute('data-price')) : 15000;
+
+            let addonsPrice = 0;
+            if (document.getElementById('addExpress').checked) {
+                addonsPrice += parseInt(document.getElementById('addExpress').getAttribute('data-price'));
+            }
+            if (document.getElementById('addRevision').checked) {
+                addonsPrice += parseInt(document.getElementById('addRevision').getAttribute('data-price'));
+            }
+            if (document.getElementById('addSubtitle').checked) {
+                addonsPrice += parseInt(document.getElementById('addSubtitle').getAttribute('data-price'));
+            }
+
+            const totalPrice = basePrice + addonsPrice;
+
+            // Update UI elements
+            const durationLabels = {
+                '15-30s': '15 – 30 Detik',
+                '30-60s': '30 – 60 Detik',
+                '1-3m': '1 – 3 Menit',
+                '3-5m': '3 – 5 Menit'
+            };
+
+            document.getElementById('summaryPackage').textContent = durationLabels[durationVal] || durationVal;
+            document.getElementById('summaryBasePrice').textContent = `Rp ${basePrice.toLocaleString('id-ID')}`;
+            document.getElementById('summaryAddonsPrice').textContent = `Rp ${addonsPrice.toLocaleString('id-ID')}`;
+            document.getElementById('summaryTotalPrice').textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+        }
+
+        // WhatsApp Order Submission Handler
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('custName').value.trim();
+            const project = document.getElementById('projectTitle').value.trim();
+            const selectedDurationRadio = document.querySelector('input[name="duration"]:checked');
+            const notes = document.getElementById('notes').value.trim();
+
+            const durationLabels = {
+                '15-30s': '15 – 30 Detik (Rp 10k - 15k)',
+                '30-60s': '30 – 60 Detik (Rp 15k - 25k)',
+                '1-3m': '1 – 3 Menit (Rp 25k - 50k)',
+                '3-5m': '3 – 5 Menit (Rp 50k - 75k)'
+            };
+
+            const durationText = durationLabels[selectedDurationRadio.value] || selectedDurationRadio.value;
+
+            // Addons Text
+            let addons = [];
+            if (document.getElementById('addExpress').checked) addons.push('Pengerjaan Kilat 24 Jam (+10k)');
+            if (document.getElementById('addRevision').checked) addons.push('Ekstra 1x Revisi (+5k)');
+            if (document.getElementById('addSubtitle').checked) addons.push('Tambah Subtitle/Caption (+10k)');
+
+            const addonsText = addons.length > 0 ? addons.join(', ') : 'Tidak ada';
+            const totalPriceText = document.getElementById('summaryTotalPrice').textContent;
+
+            // Constructing WhatsApp message string
+            let message = `Halo DHD MOTION, saya mau pesan jasa editing video! 🎥\n\n`;
+            message += `*📋 DETAIL PEMESANAN:*\n`;
+            message += `• *Nama Pemesan:* ${name}\n`;
+            message += `• *Judul Project:* ${project}\n`;
+            message += `• *Durasi Video:* ${durationText}\n`;
+            message += `• *Layanan Tambahan:* ${addonsText}\n`;
+            if (notes) {
+                message += `• *Catatan / Link Bahan:* ${notes}\n`;
+            }
+            message += `\n💰 *Estimasi Total Harga:* ${totalPriceText}\n\n`;
+            message += `Mohon info langkah selanjutnya dan konfirmasi pesanan ini. Terima kasih!`;
+
+            // Encode text for URL
+            const encodedMessage = encodeURIComponent(message);
+            const waNumber = '6285259598050';
+
+            // Open WhatsApp link
+            window.open(`https://wa.me/${waNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Run calculation once on load
+        window.onload = function() {
+            calculateTotal();
+        };
+    </script>
+</body>
+</html>
+```
